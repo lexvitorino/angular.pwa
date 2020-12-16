@@ -1,4 +1,6 @@
-# CorporateMobile
+# PWA
+
+Projeto criado no intuíto de estudo de caso para implementação de um novo produto para uma empresa
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
