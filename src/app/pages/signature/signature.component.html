@@ -1,0 +1,18 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="title uppercase">SIGNATURE</h1>
+      <small class="text-primary"><a href="https://www.npmjs.com/package/signature_pad?spm=a2c6h.14275010.0.0.1cb14c56U4RuwZ" target="_blank">Documentação</a></small>
+    </div>
+    <div class="card-body">
+      <signature-pad
+        [options]="signaturePadOptions"
+        (onBeginEvent)="drawStart()"
+        (onEndEvent)="drawComplete()"
+      ></signature-pad>
+      <button class="btn btn-block btn-orange" (click)="clear()">LIMPAR</button>
+      {{result}}
+    </div>
+  </div>
+</div>

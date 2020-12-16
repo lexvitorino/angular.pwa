@@ -1,0 +1,27 @@
+<div class="modal fade" id="dialog-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-backdrop='static'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ config?.title }}</h5>
+        <button type="button" class="close" aria-label="Close" (click)="cancel()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ config?.message }}
+      </div>
+      <div class="modal-footer" *ngIf="!!config.showFooter">
+        <button type="button" class="btn btn-block {{ config?.btnLeft?.class }}" (click)="confirm()" *ngIf="!config.btnInvert && !!config.btnLeft">
+          {{ config?.btnLeft?.text }}
+        </button>
+        <button type="button" class="btn btn-block {{ config?.btnRight?.class }}" (click)="cancel()" *ngIf="!!config.btnRight">
+          {{ config.btnRight?.text }}
+        </button>
+        <button type="button" class="btn btn-block {{ config?.btnLeft?.class }}" (click)="confirm()" *ngIf="config.btnInvert && !!config.btnLeft">
+          {{ config?.btnLeft?.text }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

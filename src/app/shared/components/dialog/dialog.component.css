@@ -1,0 +1,20 @@
+.modal-header {
+  border: 0;
+  padding: 13px 20px;
+  color: #e3533a
+}
+
+.modal-title {
+  font-size: 15px;
+}
+
+.modal-body {
+  border: 0;
+  padding: 0 20px 20px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.modal-footer {
+  border: 0;
+}

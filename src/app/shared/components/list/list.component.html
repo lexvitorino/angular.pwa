@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-body">
+    <table>
+      <tbody>
+        <tr *ngFor="let item of result" [class.tr-h3]="!!item.link">
+          <td class="text-left" [class.tr-h3-text]="!!item.link"><strong>{{ item.key }}</strong></td>
+          <td *ngIf="!item.link" class="text-right">{{ item.value }}</td>
+          <td *ngIf="!!item.link" class="text-right">
+            <a [routerLink]="[item.link, item.value]">
+              <strong>
+                <fa-icon [icon]="faSearch"></fa-icon>&nbsp;&nbsp;{{ item.value }}
+              </strong>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

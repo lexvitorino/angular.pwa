@@ -1,0 +1,17 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="title uppercase">QR-CODE</h1>
+      <small class="text-primary"><a href="https://github.com/zxing-js/ngx-scanner" target="_blank">Documentação</a></small>
+    </div>
+    <div class="card-body">
+      <button class="btn btn-block btn-orange" (click)="openCam()">ABRIR CAMERA</button>
+      <pre>
+        {{ code | json }}
+      </pre>
+    </div>
+  </div>
+</div>
+
+<app-scanner [active]="activeCam" (outExecute)="trataCode($event)"></app-scanner>

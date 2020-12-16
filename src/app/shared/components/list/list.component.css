@@ -1,0 +1,39 @@
+table {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+table,
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+table a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #e3533a;
+}
+
+.card {
+  border: 1px solid #ddd !important;
+}
+
+.card-body {
+  padding: 0.5rem !important;
+}
+
+.tr-h3 {
+  height: 30px !important;
+}
+
+.tr-h3-text {
+  font-size: 14px;
+  text-transform: uppercase;
+}

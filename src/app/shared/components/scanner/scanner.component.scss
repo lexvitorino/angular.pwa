@@ -1,0 +1,27 @@
+::ng-deep {
+  .qr-scan-area {
+    position: relative;
+    zxing-scanner {
+      max-width: 100%;
+    }
+    .qr-area {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      top: 0;
+      width: 100%;
+      .area {
+        height: 200px;
+        width: 200px;
+        border: 2px solid red;
+      }
+    }
+  }
+}
+
+.modal-body {
+  height: 60vh;
+  width: 100%;
+}

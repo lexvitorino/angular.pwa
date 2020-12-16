@@ -1,0 +1,57 @@
+<header>
+  <div class="logo">
+    <img [src]="logo" alt="Logo" />
+  </div>
+</header>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="title">LOGIN</h1>
+    </div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <input class="form-control uppercase"
+                     type="text"
+                     name="username"
+                     [(ngModel)]="login.username"
+                     placeholder="Usuário"
+                     required/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <input class="form-control"
+                     type="password"
+                     name="senha"
+                     [(ngModel)]="login.password"
+                     placeholder="Senha"
+                     required />
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group text-right">
+              <a class="forgot" href="#">Esqueceu sua senha?</a>
+            </div>
+          </div>
+        </div> -->
+        <button class="btn btn-block btn-orange"
+                [disabled]="!f.valid"
+                type="submit">Entrar!</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="fixed-bottom">
+  <span class="copyright">Copyright © 2020 All Rights Reserved</span>
+</footer>
+
+<app-dialog [config]="dialog.config"></app-dialog>

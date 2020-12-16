@@ -1,0 +1,5 @@
+mapbox - chave para utilização da api de geo localização
+https://account.mapbox.com/access-tokens/
+
+Esri Leaflet - documentação da api de localização
+https://leafletjs.com/

@@ -1,0 +1,13 @@
+<div class="breadcrumb fixed-top">
+    <div class="user">
+      <fa-icon [icon]="iconUser"></fa-icon>&nbsp;&nbsp;{{username}}
+    </div>
+    <div class="back">
+      <button routerLink="/" *ngIf="!isMenu">
+        <fa-icon [icon]="iconHome"></fa-icon>&nbsp;&nbsp;Menu
+      </button>
+      <button (click)="logout()" *ngIf="isMenu">
+        <fa-icon [icon]="iconDoorOpen"></fa-icon>&nbsp;&nbsp;Sair
+      </button>
+    </div>
+</div>

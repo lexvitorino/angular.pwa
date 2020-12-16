@@ -1,0 +1,55 @@
+https://web-push-codelab.glitch.me/
+
+Public Key
+
+
+Private Key
+
+
+{
+	"notification": {
+		"title": "PWA-PUSH-ANGULAR",
+		"body": "Uma nova notificação chegou!!",
+		"vibrate": [100, 50, 100],
+		"data": {
+			"dateOfArrival": "2018-08-31",
+			"primaryKey": 1
+		},
+		"actions": [{
+			"action": "explore",
+			"title": "Go to the site"
+		}]
+	}
+}
+
+{
+	"notification": {
+		"title": "PWA-PUSH-ANGULAR",
+		"body": "Uma nova notificação chegou!!",
+		"vibrate": [100, 50, 100],
+		"data": {
+			"dateOfArrival": "2018-08-31",
+			"primaryKey": 1
+		}
+	}
+}
+
+{
+	"endpoint":"https://bn3p.notify.windows.com/w/?token=BQYAAACTsyDkX1lLrLKlPGljaXmGwVX9v2kc8R8JeJUofzTM7deqRhLxMUF7w%2boCQtnebMMXMLYybD5zv3OAXKkXvbD8qefk4VqVWqghj7jYqBL2hIehWuqzvfqlgguKNqxrOyDWKnRJJQfoU2OUbwlqqPmAgvctvm78pyjeCmHUgD62p9rlwbnR07%2fTriQvOaC31pSlJozHeb8Ddrf6xEFwBbYeOkb%2b83WMfaGvRlW3AjA3mWIwkpiZvD8FZ42TX2zz5u%2fK1FREX%2fMBuTQyz%2fCRWf9r3oPE4MC0N8S4o%2ftwitqDVFafn%2fYCzFQYQcuzkpuuqn1lsLFlSYfyb8vRQzr3inET",
+	"expirationTime":null,
+	"keys":{
+		"p256dh":"BH-zw4uWZkmNptxOegiIi6sqxHekOB-mfWb4BwUv_TiuCxYuyhJncWXuxx3M1pW64J2acL1dAaxEcCBqQHGPJQ",
+		"auth":"ovxeCxocqoMp5k9v7YqNxA"
+		}
+	}
+}
+
+{
+	"endpoint":"https://fcm.googleapis.com/fcm/send/dxZec399AME:APA91bF2c6Yjn7YhFKjn0Mw2x4ouu6YD6luySnLTKE7GDx1sCzffD4SPuBo1_JeGbWepKdj31ELXbTGmC2Gv3Wz9ih_ApLpXu2imQByIUYFbVZg1ev3DzDbbgyTDdEkCdIDkEAkxW10",
+	"expirationTime":null,
+	"keys":{
+		"p256dh":"BC3n2wUfJRWDeT8a7gNPRSDj6P57MyK_CX0qQf0sT9_6ULi9_DVyx5eU-JEjaMk65FmXh-srUhfPdRAFeE48qJY",
+		"auth":"tXNBG7sTuJk5i6iMW9LImQ"
+		}
+	}
+}
