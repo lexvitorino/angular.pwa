@@ -1,5 +1,6 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, Output, Renderer2, ViewChild } from '@angular/core';
 import { EventEmitterService } from '../../services/event-emitter.service';
+import { MapLocationService } from './map-location.service';
 
 declare var $: any;
 declare const L: any;
@@ -32,8 +33,11 @@ export class MapLocationComponent implements OnDestroy {
 
   @Output() outExecute = new EventEmitter();
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {
+  constructor(
+    private renderer: Renderer2
+  ) {
     this.sub = EventEmitterService.get('emitMap').subscribe((placa) => {
+
       this.placa = placa;
       this.waiting = true;
 

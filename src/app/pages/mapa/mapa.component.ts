@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { MapLocationService } from './../../shared/components/map-location/map-location.service';
+import { Component, OnInit } from '@angular/core';
 import { EventEmitterService } from './../../shared/services/event-emitter.service';
 
 @Component({
@@ -6,9 +7,15 @@ import { EventEmitterService } from './../../shared/services/event-emitter.servi
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css']
 })
-export class MapaComponent {
+export class MapaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public mapLocationService: MapLocationService
+  ) { }
+
+  ngOnInit(): void {
+    this.mapLocationService.watchPosition();
+  }
 
   openMap() {
     EventEmitterService.get('emitMap').emit("TST-1234");

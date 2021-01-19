@@ -6,6 +6,11 @@
       <small class="text-primary"><a href="https://leafletjs.com/" target="_blank">Documentação</a></small>
     </div>
     <div class="card-body">
+
+      <p>Status :: {{mapLocationService.status}}</p>
+      <p>Latitude :: {{mapLocationService.desLat}}</p>
+      <p>Longitude :: {{mapLocationService.desLon}}</p>
+
       <button class="btn btn-block btn-orange" (click)="openMap()">ABRIR MAPA</button>
     </div>
   </div>

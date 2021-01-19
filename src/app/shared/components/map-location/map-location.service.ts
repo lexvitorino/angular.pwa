@@ -5,22 +5,25 @@ import { Injectable } from '@angular/core';
 })
 export class MapLocationService {
 
+  public desLat = 0;
+  public desLon = 0;
+  public status = "OK";
+
   constructor() { }
 
   watchPosition() {
     if (!navigator.geolocation) {
-      console.log('Localization not supported!');
+      this.status = 'Localization not supported!';
       return;
     }
 
-    let desLat = 0;
-    let desLon = 0;
-
     const id = navigator.geolocation.watchPosition((position) => {
-      console.log(`lat: ${position.coords.latitude}, lon: ${position.coords.longitude} `);
-      if (position.coords.latitude === desLat) {
+      if (position.coords.latitude === this.desLat) {
         navigator.geolocation.clearWatch(id);
       }
+
+      this.desLat = position.coords.latitude;
+      this.desLon = position.coords.longitude;
     },
     (err) => {
       console.log(err);
