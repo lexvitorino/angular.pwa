@@ -25,5 +25,19 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "dados-api",
+      "urls": [
+        "assets/data/list-fake.json"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 1000,
+        "maxAge": "10h",
+        "timeout": "5s"
+      }
+    }
   ]
 }
