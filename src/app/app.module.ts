@@ -23,7 +23,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  VAPID_PUBLIC_KEY = '';
+  VAPID_PUBLIC_KEY = 'BAb83-4w5RcTk4f4sqChUIxhG83zVaEJ-RGlOQaz95VXGn8wEgK-psru_ORx2CeeQnXKfGOO7wa2rrhKoOEjL5Y';
 
   constructor(private pushSw: SwPush, private update: SwUpdate) {
     update.available.subscribe(update => {

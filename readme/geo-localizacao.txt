@@ -1,5 +1,6 @@
 mapbox - chave para utilização da api de geo localização
 https://account.mapbox.com/access-tokens/
+TOKEN: pk.eyJ1IjoibGV4dml0b3Jpbm8iLCJhIjoiY2tpYWZkeWg3MGFwNTJ3czNvNjI4d21vNSJ9.CR9TO5kBeJf-RGnMzMrQJQ
 
 Esri Leaflet - documentação da api de localização
 https://leafletjs.com/

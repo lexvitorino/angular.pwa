@@ -27,7 +27,7 @@ export class MapLocationComponent implements OnDestroy {
   /* Chave de acesso a API ***** *
      * deve ser criado uma conta no Mapbox, parar ele gerar uma chave
     */
-  token = '';
+  token = 'pk.eyJ1IjoibGV4dml0b3Jpbm8iLCJhIjoiY2tpYWZkeWg3MGFwNTJ3czNvNjI4d21vNSJ9.CR9TO5kBeJf-RGnMzMrQJQ';
   /***************************** */
 
   @Output() outExecute = new EventEmitter();

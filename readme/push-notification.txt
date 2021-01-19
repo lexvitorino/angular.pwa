@@ -1,10 +1,10 @@
 https://web-push-codelab.glitch.me/
 
 Public Key
-
+BAb83-4w5RcTk4f4sqChUIxhG83zVaEJ-RGlOQaz95VXGn8wEgK-psru_Rx2CeeQnXKfGOO7wa2rrhKoOEjL5Y
 
 Private Key
-
+hFKk393NiDeTfPxbflQrnWxADy0xxBQWJTUEHET-h18
 
 {
 	"notification": {
