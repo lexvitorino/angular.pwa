@@ -1,6 +1,6 @@
-import { EventEmitterService } from './../../shared/services/event-emitter.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AppService } from './../../app.service';
 
 declare var $: any;
 
@@ -12,14 +12,25 @@ export class MenuComponent implements OnInit {
 
   title = 'Menu';
   activeCam = false;
+  OffLineQt = 0;
+
+  private readonly publicKey = 'BM9M9-VlY5VY47K_pdCzIx90JruMqIVY5NeKN1n0eBctXJZ5QU17VYdMTPXRh3GtQZyff6Mql4AbMvTvVlSZsdk';
 
   constructor(
-    public titleService: Title
+    private titleService: Title,
+    private appService: AppService
   ) {
     titleService.setTitle(`CorporateMobile | ${this.title}`);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getDataList();
+  }
+
+  getDataList() {
+    this.appService.getFakeList().subscribe(resp => {
+      this.OffLineQt = resp.length;
+    });
   }
 
 }

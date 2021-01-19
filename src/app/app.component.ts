@@ -1,4 +1,3 @@
-import { AppService } from './app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +8,14 @@ export class AppComponent implements OnInit {
 
   title = 'CorporateMobile';
 
-  constructor(private appService: AppService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.appService.getFakeList().subscribe(resp => console.log(resp));
+
+  }
+
+  updateClient() {
+
   }
 
 }
