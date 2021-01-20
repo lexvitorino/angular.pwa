@@ -14,7 +14,6 @@ export class MenuComponent implements OnInit {
   title = 'Menu';
   activeCam = false;
   OffLineQt = 0;
-  siteStatus = "ONLINE";
 
   private readonly publicKey = 'BM9M9-VlY5VY47K_pdCzIx90JruMqIVY5NeKN1n0eBctXJZ5QU17VYdMTPXRh3GtQZyff6Mql4AbMvTvVlSZsdk';
 
@@ -28,29 +27,15 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataList();
-    this.setDataUser();
-    this.getSiteStatus();
   }
 
   getDataList() {
     this.appService.getFakeList().subscribe(resp => {
       this.OffLineQt = resp.length;
+
+      // Simulando banco de dados online
+      localStorage.setItem('key', this.OffLineQt.toString());
+      localStorage.setItem('data-storage', JSON.stringify(resp));
     });
   }
-
-  setDataUser() {
-    this.indexedDB.addData('email', 'lex.vitorino@gmail.com');
-    this.indexedDB.addData('name', 'Ales Sousa');
-  }
-
-  getSiteStatus() {
-    addEventListener('online', (e) => {
-      this.siteStatus = "ONLINE";
-    });
-
-    addEventListener('offline', (e) => {
-      this.siteStatus = "OFFLINE";
-    });
-  }
-
 }

@@ -1,4 +1,5 @@
-import { IndexedDBService } from './indexed-db.service';
+import { ConnectionService } from './../../shared/services/conection.service';
+import { IndexedDBService, FakeTableModel } from './indexed-db.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,16 +8,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexedDBComponent implements OnInit {
 
-  name: any;
-  email: any;
+  public name: any;
+  public list: FakeTableModel[] = [];
+  public data: FakeTableModel = new FakeTableModel();
 
   constructor(
-    private indexedDB: IndexedDBService
-  ) { }
+    private indexedDB: IndexedDBService,
+    private connection: ConnectionService
+  ) {
+    this.listenStatusConnection();
+  }
 
-  ngOnInit() {
-    this.indexedDB.getData("name", (name: string) => this.name = name);
-    this.indexedDB.getData("email", (email: string) => this.email = email);
+  async ngOnInit() {
+    if (navigator.onLine) {
+      this.list = JSON.parse(localStorage.getItem('data-storage')) as FakeTableModel[];
+    } else {
+      this.list = await this.indexedDB.getList();
+    }
+  }
+
+  async onSubmit() {
+    try {
+      this.data.id =  this.getKey();
+      this.list.push(this.data);
+
+      if (this.connection.isOnline) {
+
+        localStorage.setItem('data-storage', JSON.stringify(this.list));
+        console.log(`I'm is online`);
+      } else {
+
+        this.indexedDB.add(this.data);
+        console.log(`I'm is offline`);
+      }
+
+      this.data = new FakeTableModel();
+    } catch (error) {
+      console.log('DataBase Offline Not Resolved', error);
+    }
+  }
+
+  private getKey(): number {
+    const key = parseInt(localStorage.getItem('key')) + 1;
+    localStorage.setItem('key', key.toString());
+    return key;
+  }
+
+  listenStatusConnection() {
+    this.connection.statusConnection.subscribe(online => {
+      console.log(`Change status connection :: `, online);
+      if (online) {
+        this.indexedDB.syncDb();
+      }
+    });
   }
 
 }

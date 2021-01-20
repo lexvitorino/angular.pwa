@@ -1,65 +1,65 @@
 import { Injectable } from '@angular/core';
-import { DBSchema, IDBPDatabase, openDB } from 'idb';
+import Dexie from 'dexie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IndexedDBService {
 
-  private db: IDBPDatabase<MyDB>;
-
-  private dbName = 'my-db';
+  private db: Dexie;
+  private table: Dexie.Table<FakeTableModel, any> = null;
 
   constructor() {
-    this.connectToDb();
+    this.init();
   }
 
-  async connectToDb() {
-    this.db = await openDB<MyDB>(this.dbName, 1, {
-      upgrade(db) {
-        db.createObjectStore('data-store');
-      }
+  private init() {
+    this.db = new Dexie('db-objects');
+    this.db.version(1).stores({
+      fakeTable: 'id'
     });
+    this.table = this.db.table('fakeTable');
   }
 
-  execute(callBack?: (resp?: any) => any) {
-    let db;
-    const request = indexedDB.open(this.dbName);
-    request.onerror = (event) => {
-      console.log('Please allow my web app to use IndexedDB 😃>>>👻');
-    };
-    request.onsuccess = (event: any) => {
-      db = event.target.result;
-      callBack(db);
-    };
+  async getList() {
+    try {
+      const fakeTables: FakeTableModel[] = await this.table.toArray();
+      return fakeTables;
+    } catch (error) {
+      console.log('DataBase Offline Not Resolved', error);
+    }
   }
 
-  getData(key: string, callBack?: (resp?: any) => any) {
-    this.execute((db) => {
-      const transaction = db.transaction(['data-store']);
-      const objectStore = transaction.objectStore('data-store');
-      const request = objectStore.get(key);
-      request.onerror = (event) => {
-        // Handle errors!
-      };
-      request.onsuccess = (event) => {
-        // Do something with the request.result!
-        callBack(request.result);
-      };
-    });
+  async add(data: FakeTableModel) {
+    await this.table.add(data);
   }
 
-  addData(key: string, value: string) {
-    this.execute(() => {
-      return this.db.put('data-store', value, key);
-    });
+  async delete(id) {
+    await this.table.delete(id);
+  }
+
+  async syncDb() {
+    try {
+
+      const fakeTablesOn = JSON.parse(localStorage.getItem('data-storage')) as FakeTableModel[];
+      const fakeTablesOff = await this.getList();
+
+      fakeTablesOff.forEach(data => {
+        fakeTablesOn.push(data);
+        this.delete(data.id);
+      });
+
+      localStorage.setItem('data-storage', JSON.stringify(fakeTablesOn));
+
+    } catch (error) {
+      console.log('DataBase Offline Not Resolved', error);
+    }
   }
 
 }
 
-interface MyDB extends DBSchema {
-  'data-store' : {
-    key: string;
-    value: string;
-  }
+export class FakeTableModel {
+  id: number;
+  name: string;
+  age: number;
 }
