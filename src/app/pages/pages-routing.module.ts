@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IndexedDBComponent } from './indexed-db/indexed-db.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { MenuComponent } from './menu/menu.component';
 import { PagesComponent } from './pages.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'mapa', component: MapaComponent },
       { path: 'qrcode', component: QrcodeComponent },
       { path: 'signature', component: SignatureComponent },
+      { path: 'indexedDB', component: IndexedDBComponent },
       { path: '', pathMatch: 'full', redirectTo: 'menu' },
     ]
   }

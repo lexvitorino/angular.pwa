@@ -1,11 +1,12 @@
-import { interval } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule, SwPush, SwUpdate } from '@angular/service-worker';
+import { interval } from 'rxjs';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IndexedDBService } from './pages/indexed-db/indexed-db.service';
 import { LoginModule } from './pages/login/login.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
@@ -29,7 +30,8 @@ export class AppModule {
   constructor(
     private swUpdate: SwUpdate,
     private appRef: ApplicationRef,
-    private swPush: SwPush
+    private swPush: SwPush,
+    private indexedDB: IndexedDBService
   ) {
     this.updateClient();
     this.checkUpdate();
@@ -85,7 +87,9 @@ export class AppModule {
   }
 
   getNotifications() {
-    this.swPush.messages.subscribe((message) => console.log(message));
+    this.swPush.messages.subscribe((message: any) => {
+      console.log(message)
+    });
   }
 
   clickNotifications() {

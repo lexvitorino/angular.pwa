@@ -1,3 +1,4 @@
+import { IndexedDBService } from './../indexed-db/indexed-db.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AppService } from './../../app.service';
@@ -18,19 +19,26 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private appService: AppService
+    private appService: AppService,
+    private indexedDB: IndexedDBService
   ) {
     titleService.setTitle(`CorporateMobile | ${this.title}`);
   }
 
   ngOnInit(): void {
     this.getDataList();
+    this.setDataUser();
   }
 
   getDataList() {
     this.appService.getFakeList().subscribe(resp => {
       this.OffLineQt = resp.length;
     });
+  }
+
+  setDataUser() {
+    this.indexedDB.addData('email', 'lex.vitorino@gmail.com');
+    this.indexedDB.addData('name', 'Ales Sousa');
   }
 
 }
